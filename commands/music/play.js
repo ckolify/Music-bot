@@ -20,6 +20,11 @@ module.exports = {
             metadata: message.channel
         });
 
+        const queue = await player.createQueue(message.guild, {
+            metadata: message.channel,
+            leaveOnEnd: false
+        });
+
         try {
             if (!queue.connection) await queue.connect(message.member.voice.channel);
         } catch {
